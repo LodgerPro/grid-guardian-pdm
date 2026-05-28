@@ -1,0 +1,14 @@
+# Build output
+dist/
+.vite/
+
+# Dependencies
+node_modules/
+
+# TypeScript incremental + emitted artifacts (Vite handles emit, tsc is type-check only)
+*.tsbuildinfo
+src/**/*.js
+
+# OS / editor
+.DS_Store
+Thumbs.db
