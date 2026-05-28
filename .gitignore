@@ -186,3 +186,8 @@ data/
 node_modules/
 app/dist/
 app/.vite/
+
+# The Python template above ignores 'lib/' (used by Python packaging).
+# Our frontend has app/src/lib/ — explicitly re-include it.
+!app/src/lib/
+!app/src/lib/**
