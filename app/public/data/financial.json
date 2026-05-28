@@ -1,0 +1,90 @@
+{
+  "inputs": {
+    "n_units": 50,
+    "investment_mln": 8.0,
+    "discount_rate": 0.14,
+    "avoidance": 0.65,
+    "base_failure_rate": 0.025,
+    "emergency_repair_mln": 7.5,
+    "planned_repair_mln": 1.9,
+    "opex_pct": 0.125,
+    "horizon_years": 5
+  },
+  "inputs_min_max": {
+    "discount_rate": {
+      "min": 0.05,
+      "max": 0.25,
+      "step": 0.005
+    },
+    "avoidance": {
+      "min": 0.3,
+      "max": 0.95,
+      "step": 0.01
+    },
+    "base_failure_rate": {
+      "min": 0.005,
+      "max": 0.05,
+      "step": 0.001
+    }
+  },
+  "kpi_at_base": {
+    "roi_pct": 121.88,
+    "pp_years": 2.25,
+    "npv_mln": 4.19,
+    "irr_pct": 34.17,
+    "dpp_years": 2.9,
+    "annual_savings_mln": 4.55,
+    "annual_opex_mln": 1.0
+  },
+  "sensitivity_3x3": {
+    "rates": [
+      0.12,
+      0.14,
+      0.17
+    ],
+    "avoidances": [
+      0.45,
+      0.65,
+      0.8
+    ],
+    "npv_mln": [
+      [
+        -0.25,
+        -0.62,
+        -1.12
+      ],
+      [
+        4.8,
+        4.19,
+        3.36
+      ],
+      [
+        8.58,
+        7.79,
+        6.72
+      ]
+    ]
+  },
+  "scaling_35kv_plus": {
+    "n_substations_in_scope": {
+      "low": 20000,
+      "midpoint": 40100,
+      "high": 60000
+    },
+    "annual_saving_mln": {
+      "low": 5460.0,
+      "midpoint": 10947.0,
+      "high": 16380.0
+    },
+    "scaled_npv_mln": {
+      "low": 17109.0,
+      "midpoint": 34922.0,
+      "high": 52705.0
+    }
+  },
+  "target_payback_band_years": {
+    "low": 5,
+    "high": 10,
+    "source": "ЦТ-2030 стр. 15"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "kpi": {
+    "n_units": {
+      "value": 50,
+      "delta": 0,
+      "delta_label": "± 0",
+      "sub": "под наблюдением"
+    },
+    "mean_risk_pct": {
+      "value": 9.3,
+      "delta": -1.2,
+      "delta_label": "▼ 1.2 п.п.",
+      "sub": "к прошлому месяцу"
+    },
+    "active_warnings": {
+      "value": 6,
+      "delta": 4,
+      "delta_label": "▲ 4",
+      "sub": "за 7 дней"
+    },
+    "critical_units": {
+      "value": 3,
+      "delta": 2,
+      "delta_label": "▲ 2",
+      "sub": "требуют выезда"
+    }
+  },
+  "risk_distribution": {
+    "low": {
+      "count": 791334,
+      "pct": 90.708
+    },
+    "medium": {
+      "count": 16530,
+      "pct": 1.895
+    },
+    "high": {
+      "count": 64536,
+      "pct": 7.398
+    },
+    "total": 872400
+  },
+  "alerts": [
+    {
+      "id": "SUB004_EQ05",
+      "substation": "Тула-220",
+      "reason": "Прогноз класса High на горизонте 72 ч",
+      "probability_pct": 69.1,
+      "level": "crit"
+    },
+    {
+      "id": "SUB009_EQ01",
+      "substation": "Новосибирск-500",
+      "reason": "Прогноз класса High на горизонте 72 ч",
+      "probability_pct": 66.7,
+      "level": "crit"
+    },
+    {
+      "id": "SUB001_EQ05",
+      "substation": "Мурманск-220",
+      "reason": "Прогноз класса High на горизонте 72 ч",
+      "probability_pct": 58.4,
+      "level": "crit"
+    },
+    {
+      "id": "SUB007_EQ05",
+      "substation": "Ростов-220",
+      "reason": "Класс Medium, рост C₂H₂ за 14 дней",
+      "probability_pct": 52.3,
+      "level": "warn"
+    },
+    {
+      "id": "SUB001_EQ04",
+      "substation": "Мурманск-220",
+      "reason": "Класс Medium, рост C₂H₂ за 14 дней",
+      "probability_pct": 51.7,
+      "level": "warn"
+    },
+    {
+      "id": "SUB006_EQ04",
+      "substation": "Казань-330",
+      "reason": "Класс Medium, рост C₂H₂ за 14 дней",
+      "probability_pct": 48.5,
+      "level": "warn"
+    },
+    {
+      "id": "SUB010_EQ01",
+      "substation": "Красноярск-330",
+      "reason": "Класс Medium, рост C₂H₂ за 14 дней",
+      "probability_pct": 31.0,
+      "level": "warn"
+    }
+  ],
+  "model_card": {
+    "recall_high": 99.91,
+    "horizon_hours": 72,
+    "n_features_used": 104
+  },
+  "updated_at": "2026-05-28",
+  "period_days": 30,
+  "degraded_units_total": 9
+}

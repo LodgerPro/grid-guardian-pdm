@@ -1,0 +1,859 @@
+{
+  "horizon_hours": 72,
+  "n_total": 50,
+  "n_critical": 6,
+  "n_warning": 3,
+  "n_ok": 41,
+  "items": [
+    {
+      "id": "SUB004_EQ05",
+      "substation": "Тула-220",
+      "voltage": "220 кВ",
+      "city": "Тула",
+      "probability_72h_pct": 63.6,
+      "status": "crit",
+      "is_degraded_unit": true,
+      "factors": {
+        "c2h2": 0.277,
+        "temperature": 0.173,
+        "vibration": 0.124,
+        "humidity": 0.012,
+        "tan_delta": 0.005,
+        "service_age": 0.004
+      }
+    },
+    {
+      "id": "SUB009_EQ01",
+      "substation": "Новосибирск-500",
+      "voltage": "500 кВ",
+      "city": "Новосибирск",
+      "probability_72h_pct": 59.9,
+      "status": "crit",
+      "is_degraded_unit": true,
+      "factors": {
+        "c2h2": 0.267,
+        "temperature": 0.167,
+        "vibration": 0.12,
+        "humidity": 0.008,
+        "tan_delta": 0.003,
+        "service_age": 0.002
+      }
+    },
+    {
+      "id": "SUB001_EQ05",
+      "substation": "Мурманск-220",
+      "voltage": "220 кВ",
+      "city": "Мурманск",
+      "probability_72h_pct": 54.3,
+      "status": "crit",
+      "is_degraded_unit": true,
+      "factors": {
+        "c2h2": 0.234,
+        "temperature": 0.146,
+        "vibration": 0.105,
+        "humidity": 0.012,
+        "tan_delta": 0.005,
+        "service_age": 0.004
+      }
+    },
+    {
+      "id": "SUB007_EQ05",
+      "substation": "Ростов-220",
+      "voltage": "220 кВ",
+      "city": "Ростов-на-Дону",
+      "probability_72h_pct": 39.9,
+      "status": "crit",
+      "is_degraded_unit": true,
+      "factors": {
+        "c2h2": 0.169,
+        "temperature": 0.105,
+        "vibration": 0.076,
+        "humidity": 0.01,
+        "tan_delta": 0.004,
+        "service_age": 0.003
+      }
+    },
+    {
+      "id": "SUB001_EQ04",
+      "substation": "Мурманск-220",
+      "voltage": "220 кВ",
+      "city": "Мурманск",
+      "probability_72h_pct": 39.4,
+      "status": "crit",
+      "is_degraded_unit": true,
+      "factors": {
+        "c2h2": 0.166,
+        "temperature": 0.104,
+        "vibration": 0.075,
+        "humidity": 0.01,
+        "tan_delta": 0.004,
+        "service_age": 0.003
+      }
+    },
+    {
+      "id": "SUB006_EQ04",
+      "substation": "Казань-330",
+      "voltage": "330 кВ",
+      "city": "Казань",
+      "probability_72h_pct": 36.3,
+      "status": "crit",
+      "is_degraded_unit": true,
+      "factors": {
+        "c2h2": 0.15,
+        "temperature": 0.094,
+        "vibration": 0.068,
+        "humidity": 0.011,
+        "tan_delta": 0.004,
+        "service_age": 0.003
+      }
+    },
+    {
+      "id": "SUB010_EQ01",
+      "substation": "Красноярск-330",
+      "voltage": "330 кВ",
+      "city": "Красноярск",
+      "probability_72h_pct": 22.6,
+      "status": "warn",
+      "is_degraded_unit": true,
+      "factors": {
+        "c2h2": 0.09,
+        "temperature": 0.056,
+        "vibration": 0.041,
+        "humidity": 0.008,
+        "tan_delta": 0.003,
+        "service_age": 0.003
+      }
+    },
+    {
+      "id": "SUB003_EQ01",
+      "substation": "Подольск-220",
+      "voltage": "220 кВ",
+      "city": "Подольск",
+      "probability_72h_pct": 19.8,
+      "status": "warn",
+      "is_degraded_unit": true,
+      "factors": {
+        "c2h2": 0.072,
+        "temperature": 0.045,
+        "vibration": 0.033,
+        "humidity": 0.011,
+        "tan_delta": 0.004,
+        "service_age": 0.003
+      }
+    },
+    {
+      "id": "SUB007_EQ04",
+      "substation": "Ростов-220",
+      "voltage": "220 кВ",
+      "city": "Ростов-на-Дону",
+      "probability_72h_pct": 16.5,
+      "status": "warn",
+      "is_degraded_unit": true,
+      "factors": {
+        "c2h2": 0.054,
+        "temperature": 0.034,
+        "vibration": 0.025,
+        "humidity": 0.012,
+        "tan_delta": 0.005,
+        "service_age": 0.004
+      }
+    },
+    {
+      "id": "SUB001_EQ01",
+      "substation": "Мурманск-220",
+      "voltage": "220 кВ",
+      "city": "Мурманск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB001_EQ02",
+      "substation": "Мурманск-220",
+      "voltage": "220 кВ",
+      "city": "Мурманск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB001_EQ03",
+      "substation": "Мурманск-220",
+      "voltage": "220 кВ",
+      "city": "Мурманск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB002_EQ01",
+      "substation": "СПб-Северная-330",
+      "voltage": "330 кВ",
+      "city": "Санкт-Петербург",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB002_EQ02",
+      "substation": "СПб-Северная-330",
+      "voltage": "330 кВ",
+      "city": "Санкт-Петербург",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB002_EQ03",
+      "substation": "СПб-Северная-330",
+      "voltage": "330 кВ",
+      "city": "Санкт-Петербург",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB002_EQ04",
+      "substation": "СПб-Северная-330",
+      "voltage": "330 кВ",
+      "city": "Санкт-Петербург",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB002_EQ05",
+      "substation": "СПб-Северная-330",
+      "voltage": "330 кВ",
+      "city": "Санкт-Петербург",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB003_EQ02",
+      "substation": "Подольск-220",
+      "voltage": "220 кВ",
+      "city": "Подольск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB003_EQ03",
+      "substation": "Подольск-220",
+      "voltage": "220 кВ",
+      "city": "Подольск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB003_EQ04",
+      "substation": "Подольск-220",
+      "voltage": "220 кВ",
+      "city": "Подольск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB003_EQ05",
+      "substation": "Подольск-220",
+      "voltage": "220 кВ",
+      "city": "Подольск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB004_EQ01",
+      "substation": "Тула-220",
+      "voltage": "220 кВ",
+      "city": "Тула",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB004_EQ02",
+      "substation": "Тула-220",
+      "voltage": "220 кВ",
+      "city": "Тула",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB004_EQ03",
+      "substation": "Тула-220",
+      "voltage": "220 кВ",
+      "city": "Тула",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB004_EQ04",
+      "substation": "Тула-220",
+      "voltage": "220 кВ",
+      "city": "Тула",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB005_EQ01",
+      "substation": "Нижний Новгород-500",
+      "voltage": "500 кВ",
+      "city": "Нижний Новгород",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB005_EQ02",
+      "substation": "Нижний Новгород-500",
+      "voltage": "500 кВ",
+      "city": "Нижний Новгород",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB005_EQ03",
+      "substation": "Нижний Новгород-500",
+      "voltage": "500 кВ",
+      "city": "Нижний Новгород",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB005_EQ04",
+      "substation": "Нижний Новгород-500",
+      "voltage": "500 кВ",
+      "city": "Нижний Новгород",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB005_EQ05",
+      "substation": "Нижний Новгород-500",
+      "voltage": "500 кВ",
+      "city": "Нижний Новгород",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB006_EQ01",
+      "substation": "Казань-330",
+      "voltage": "330 кВ",
+      "city": "Казань",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB006_EQ02",
+      "substation": "Казань-330",
+      "voltage": "330 кВ",
+      "city": "Казань",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB006_EQ03",
+      "substation": "Казань-330",
+      "voltage": "330 кВ",
+      "city": "Казань",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB006_EQ05",
+      "substation": "Казань-330",
+      "voltage": "330 кВ",
+      "city": "Казань",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB007_EQ01",
+      "substation": "Ростов-220",
+      "voltage": "220 кВ",
+      "city": "Ростов-на-Дону",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB007_EQ02",
+      "substation": "Ростов-220",
+      "voltage": "220 кВ",
+      "city": "Ростов-на-Дону",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB007_EQ03",
+      "substation": "Ростов-220",
+      "voltage": "220 кВ",
+      "city": "Ростов-на-Дону",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB008_EQ01",
+      "substation": "Краснодар-220",
+      "voltage": "220 кВ",
+      "city": "Краснодар",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB008_EQ02",
+      "substation": "Краснодар-220",
+      "voltage": "220 кВ",
+      "city": "Краснодар",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB008_EQ03",
+      "substation": "Краснодар-220",
+      "voltage": "220 кВ",
+      "city": "Краснодар",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB008_EQ04",
+      "substation": "Краснодар-220",
+      "voltage": "220 кВ",
+      "city": "Краснодар",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB008_EQ05",
+      "substation": "Краснодар-220",
+      "voltage": "220 кВ",
+      "city": "Краснодар",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB009_EQ02",
+      "substation": "Новосибирск-500",
+      "voltage": "500 кВ",
+      "city": "Новосибирск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB009_EQ03",
+      "substation": "Новосибирск-500",
+      "voltage": "500 кВ",
+      "city": "Новосибирск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB009_EQ04",
+      "substation": "Новосибирск-500",
+      "voltage": "500 кВ",
+      "city": "Новосибирск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB009_EQ05",
+      "substation": "Новосибирск-500",
+      "voltage": "500 кВ",
+      "city": "Новосибирск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB010_EQ02",
+      "substation": "Красноярск-330",
+      "voltage": "330 кВ",
+      "city": "Красноярск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB010_EQ03",
+      "substation": "Красноярск-330",
+      "voltage": "330 кВ",
+      "city": "Красноярск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB010_EQ04",
+      "substation": "Красноярск-330",
+      "voltage": "330 кВ",
+      "city": "Красноярск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    },
+    {
+      "id": "SUB010_EQ05",
+      "substation": "Красноярск-330",
+      "voltage": "330 кВ",
+      "city": "Красноярск",
+      "probability_72h_pct": 0.0,
+      "status": "ok",
+      "is_degraded_unit": false,
+      "factors": {
+        "c2h2": 0.0,
+        "temperature": 0.0,
+        "vibration": 0.0,
+        "humidity": 0.0,
+        "tan_delta": 0.0,
+        "service_age": 0.0
+      }
+    }
+  ]
+}

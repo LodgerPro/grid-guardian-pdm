@@ -1,0 +1,157 @@
+{
+  "substations": [
+    {
+      "id": "SUB001",
+      "name": "Мурманск-220",
+      "city": "Мурманск",
+      "voltage": "220 кВ",
+      "lat": 68.9585,
+      "lon": 33.0827,
+      "n_units": 5,
+      "status": "crit",
+      "max_probability_pct": 54.3
+    },
+    {
+      "id": "SUB002",
+      "name": "СПб-Северная-330",
+      "city": "Санкт-Петербург",
+      "voltage": "330 кВ",
+      "lat": 59.9343,
+      "lon": 30.3351,
+      "n_units": 5,
+      "status": "ok",
+      "max_probability_pct": 0.0
+    },
+    {
+      "id": "SUB003",
+      "name": "Подольск-220",
+      "city": "Подольск",
+      "voltage": "220 кВ",
+      "lat": 55.431,
+      "lon": 37.5447,
+      "n_units": 5,
+      "status": "warn",
+      "max_probability_pct": 19.8
+    },
+    {
+      "id": "SUB004",
+      "name": "Тула-220",
+      "city": "Тула",
+      "voltage": "220 кВ",
+      "lat": 54.1961,
+      "lon": 37.6182,
+      "n_units": 5,
+      "status": "crit",
+      "max_probability_pct": 63.6
+    },
+    {
+      "id": "SUB005",
+      "name": "Нижний Новгород-500",
+      "city": "Нижний Новгород",
+      "voltage": "500 кВ",
+      "lat": 56.3287,
+      "lon": 44.002,
+      "n_units": 5,
+      "status": "ok",
+      "max_probability_pct": 0.0
+    },
+    {
+      "id": "SUB006",
+      "name": "Казань-330",
+      "city": "Казань",
+      "voltage": "330 кВ",
+      "lat": 55.7887,
+      "lon": 49.1221,
+      "n_units": 5,
+      "status": "crit",
+      "max_probability_pct": 36.3
+    },
+    {
+      "id": "SUB007",
+      "name": "Ростов-220",
+      "city": "Ростов-на-Дону",
+      "voltage": "220 кВ",
+      "lat": 47.2225,
+      "lon": 39.7187,
+      "n_units": 5,
+      "status": "crit",
+      "max_probability_pct": 39.9
+    },
+    {
+      "id": "SUB008",
+      "name": "Краснодар-220",
+      "city": "Краснодар",
+      "voltage": "220 кВ",
+      "lat": 45.0355,
+      "lon": 38.9753,
+      "n_units": 5,
+      "status": "ok",
+      "max_probability_pct": 0.0
+    },
+    {
+      "id": "SUB009",
+      "name": "Новосибирск-500",
+      "city": "Новосибирск",
+      "voltage": "500 кВ",
+      "lat": 55.0084,
+      "lon": 82.9357,
+      "n_units": 5,
+      "status": "crit",
+      "max_probability_pct": 59.9
+    },
+    {
+      "id": "SUB010",
+      "name": "Красноярск-330",
+      "city": "Красноярск",
+      "voltage": "330 кВ",
+      "lat": 56.0153,
+      "lon": 92.8932,
+      "n_units": 5,
+      "status": "warn",
+      "max_probability_pct": 22.6
+    }
+  ],
+  "suggested_route": [
+    {
+      "order": 1,
+      "id": "SUB001",
+      "name": "Мурманск-220",
+      "lat": 68.9585,
+      "lon": 33.0827,
+      "max_probability_pct": 54.3
+    },
+    {
+      "order": 2,
+      "id": "SUB004",
+      "name": "Тула-220",
+      "lat": 54.1961,
+      "lon": 37.6182,
+      "max_probability_pct": 63.6
+    },
+    {
+      "order": 3,
+      "id": "SUB007",
+      "name": "Ростов-220",
+      "lat": 47.2225,
+      "lon": 39.7187,
+      "max_probability_pct": 39.9
+    },
+    {
+      "order": 4,
+      "id": "SUB006",
+      "name": "Казань-330",
+      "lat": 55.7887,
+      "lon": 49.1221,
+      "max_probability_pct": 36.3
+    },
+    {
+      "order": 5,
+      "id": "SUB009",
+      "name": "Новосибирск-500",
+      "lat": 55.0084,
+      "lon": 82.9357,
+      "max_probability_pct": 59.9
+    }
+  ],
+  "route_strategy": "запад → восток, только критичные узлы"
+}

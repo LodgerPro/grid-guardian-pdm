@@ -191,3 +191,9 @@ app/.vite/
 # Our frontend has app/src/lib/ — explicitly re-include it.
 !app/src/lib/
 !app/src/lib/**
+
+# 'data/' above ignores the regenerable Parquet dataset at the project root.
+# But app/public/data/ holds runtime JSONs the React app fetches at runtime —
+# they MUST be tracked. Re-include them.
+!app/public/data/
+!app/public/data/**
