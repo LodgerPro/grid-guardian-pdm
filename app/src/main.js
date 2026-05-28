@@ -1,0 +1,14 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import "./styles/shared.css";
+import "./styles/app.css";
+import IconSprite from "./components/IconSprite";
+import Shell from "./components/Shell";
+import Home from "./pages/Home";
+import Predictions from "./pages/Predictions";
+import Financial from "./pages/Financial";
+import MapsPage from "./pages/MapsPage";
+import Monitoring from "./pages/Monitoring";
+ReactDOM.createRoot(document.getElementById("root")).render(_jsxs(React.StrictMode, { children: [_jsx(IconSprite, {}), _jsx(HashRouter, { children: _jsx(Shell, { children: _jsxs(Routes, { children: [_jsx(Route, { path: "/", element: _jsx(Home, {}) }), _jsx(Route, { path: "/predictions", element: _jsx(Predictions, {}) }), _jsx(Route, { path: "/financial", element: _jsx(Financial, {}) }), _jsx(Route, { path: "/maps", element: _jsx(MapsPage, {}) }), _jsx(Route, { path: "/monitoring", element: _jsx(Monitoring, {}) }), _jsx(Route, { path: "*", element: _jsx(Navigate, { to: "/", replace: true }) })] }) }) })] }));

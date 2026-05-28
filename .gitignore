@@ -179,3 +179,10 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# Grid Guardian project-specific
+data/
+*.parquet
+node_modules/
+app/dist/
+app/.vite/

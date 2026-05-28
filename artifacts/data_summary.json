@@ -1,0 +1,829 @@
+{
+  "random_seed": 42,
+  "n_substations": 10,
+  "n_transformers_per_substation": 5,
+  "n_units": 50,
+  "n_hours_per_unit": 17520,
+  "total_records": 876000,
+  "n_columns": 18,
+  "period": {
+    "start": "2023-01-01T00:00:00",
+    "end": "2024-12-30T23:00:00"
+  },
+  "degradation": {
+    "fraction": 0.18,
+    "n_degraded_units": 9,
+    "units": [
+      "SUB001_EQ04",
+      "SUB001_EQ05",
+      "SUB003_EQ01",
+      "SUB004_EQ05",
+      "SUB006_EQ04",
+      "SUB007_EQ04",
+      "SUB007_EQ05",
+      "SUB009_EQ01",
+      "SUB010_EQ01"
+    ],
+    "schedule": {
+      "SUB007_EQ04": {
+        "onset_t_norm": 0.602,
+        "full_deg_t_norm": 0.932
+      },
+      "SUB007_EQ05": {
+        "onset_t_norm": 0.357,
+        "full_deg_t_norm": 0.625
+      },
+      "SUB001_EQ04": {
+        "onset_t_norm": 0.361,
+        "full_deg_t_norm": 0.635
+      },
+      "SUB001_EQ05": {
+        "onset_t_norm": 0.167,
+        "full_deg_t_norm": 0.466
+      },
+      "SUB009_EQ01": {
+        "onset_t_norm": 0.169,
+        "full_deg_t_norm": 0.379
+      },
+      "SUB003_EQ01": {
+        "onset_t_norm": 0.584,
+        "full_deg_t_norm": 0.88
+      },
+      "SUB010_EQ01": {
+        "onset_t_norm": 0.601,
+        "full_deg_t_norm": 0.823
+      },
+      "SUB004_EQ05": {
+        "onset_t_norm": 0.044,
+        "full_deg_t_norm": 0.361
+      },
+      "SUB006_EQ04": {
+        "onset_t_norm": 0.399,
+        "full_deg_t_norm": 0.69
+      }
+    }
+  },
+  "asymmetry": {
+    "fraction": 0.2,
+    "n_units": 10,
+    "units": [
+      "SUB002_EQ01",
+      "SUB002_EQ04",
+      "SUB004_EQ02",
+      "SUB004_EQ05",
+      "SUB005_EQ01",
+      "SUB005_EQ03",
+      "SUB007_EQ02",
+      "SUB008_EQ01",
+      "SUB008_EQ03",
+      "SUB009_EQ04"
+    ]
+  },
+  "parameter_stats_global": {
+    "temperature_top": {
+      "mean": 72.64554595947266,
+      "std": 8.498238563537598,
+      "min": 55.84000015258789,
+      "p05": 65.12000274658203,
+      "p50": 70.62999725341797,
+      "p95": 97.9800033569336,
+      "p99": 103.37000274658203,
+      "max": 112.75
+    },
+    "temperature_oil": {
+      "mean": 68.98777770996094,
+      "std": 12.330004692077637,
+      "min": 48.689998626708984,
+      "p05": 59.84000015258789,
+      "p50": 65.70999908447266,
+      "p95": 107.5,
+      "p99": 113.66000366210938,
+      "max": 122.3499984741211
+    },
+    "voltage_phase_a": {
+      "mean": 10.030055046081543,
+      "std": 0.10614965111017227,
+      "min": 9.562000274658203,
+      "p05": 9.866000175476074,
+      "p50": 10.02400016784668,
+      "p95": 10.217000007629395,
+      "p99": 10.295999526977539,
+      "max": 10.531000137329102
+    },
+    "voltage_phase_b": {
+      "mean": 9.99990177154541,
+      "std": 0.08735595643520355,
+      "min": 9.616999626159668,
+      "p05": 9.855999946594238,
+      "p50": 10.0,
+      "p95": 10.144000053405762,
+      "p99": 10.20199966430664,
+      "max": 10.41100025177002
+    },
+    "voltage_phase_c": {
+      "mean": 9.963900566101074,
+      "std": 0.1133602187037468,
+      "min": 9.4399995803833,
+      "p05": 9.756999969482422,
+      "p50": 9.973999977111816,
+      "p95": 10.133999824523926,
+      "p99": 10.194999694824219,
+      "max": 10.406000137329102
+    },
+    "current_phase_a": {
+      "mean": 138.06027221679688,
+      "std": 28.869897842407227,
+      "min": 33.16999816894531,
+      "p05": 90.18000030517578,
+      "p50": 138.19000244140625,
+      "p95": 184.82000732421875,
+      "p99": 200.6300048828125,
+      "max": 247.63999938964844
+    },
+    "current_phase_b": {
+      "mean": 134.310546875,
+      "std": 27.505470275878906,
+      "min": 30.360000610351562,
+      "p05": 88.54000091552734,
+      "p50": 134.8300018310547,
+      "p95": 178.5,
+      "p99": 192.38999938964844,
+      "max": 228.3699951171875
+    },
+    "current_phase_c": {
+      "mean": 132.22286987304688,
+      "std": 27.490835189819336,
+      "min": 26.610000610351562,
+      "p05": 86.7300033569336,
+      "p50": 132.61000061035156,
+      "p95": 176.67999267578125,
+      "p99": 192.82000732421875,
+      "max": 236.80999755859375
+    },
+    "gas_h2": {
+      "mean": 38.62626647949219,
+      "std": 59.48408889770508,
+      "min": 8.069999694824219,
+      "p05": 10.800000190734863,
+      "p50": 20.329999923706055,
+      "p95": 239.32000732421875,
+      "p99": 246.0800018310547,
+      "max": 259.0899963378906
+    },
+    "gas_ch4": {
+      "mean": 20.390783309936523,
+      "std": 24.52597427368164,
+      "min": 5.03000020980835,
+      "p05": 7.099999904632568,
+      "p50": 13.350000381469727,
+      "p95": 102.77999877929688,
+      "p99": 106.20999908447266,
+      "max": 112.33000183105469
+    },
+    "gas_c2h2": {
+      "mean": 8.97612190246582,
+      "std": 16.059885025024414,
+      "min": 1.0099999904632568,
+      "p05": 1.690000057220459,
+      "p50": 4.099999904632568,
+      "p95": 62.189998626708984,
+      "p99": 66.01000213623047,
+      "max": 69.18000030517578
+    },
+    "vibration_x": {
+      "mean": 2.6039235591888428,
+      "std": 1.463056206703186,
+      "min": 0.30000001192092896,
+      "p05": 1.2879999876022339,
+      "p50": 2.239000082015991,
+      "p95": 6.85699987411499,
+      "p99": 7.839000225067139,
+      "max": 9.239999771118164
+    },
+    "vibration_y": {
+      "mean": 2.603956699371338,
+      "std": 1.4631335735321045,
+      "min": 0.30000001192092896,
+      "p05": 1.2879999876022339,
+      "p50": 2.23799991607666,
+      "p95": 6.857999801635742,
+      "p99": 7.84499979019165,
+      "max": 9.184000015258789
+    },
+    "vibration_z": {
+      "mean": 2.6036128997802734,
+      "std": 1.463351845741272,
+      "min": 0.30000001192092896,
+      "p05": 1.2860000133514404,
+      "p50": 2.236999988555908,
+      "p95": 6.85699987411499,
+      "p99": 7.8429999351501465,
+      "max": 9.286999702453613
+    },
+    "humidity": {
+      "mean": 55.00653839111328,
+      "std": 11.874103546142578,
+      "min": 19.780000686645508,
+      "p05": 36.41999816894531,
+      "p50": 54.9900016784668,
+      "p95": 73.61000061035156,
+      "p99": 78.08999633789062,
+      "max": 91.02999877929688
+    },
+    "load_percentage": {
+      "mean": 53.83735275268555,
+      "std": 10.786685943603516,
+      "min": 15.0,
+      "p05": 35.84000015258789,
+      "p50": 54.040000915527344,
+      "p95": 71.06999969482422,
+      "p99": 76.41999816894531,
+      "max": 90.98999786376953
+    }
+  },
+  "parameter_stats_last_30d_healthy_vs_degraded": {
+    "temperature_top": {
+      "healthy": {
+        "mean": 71.29752349853516,
+        "std": 2.9012980461120605,
+        "min": 58.779998779296875,
+        "p05": 66.44000244140625,
+        "p50": 71.3499984741211,
+        "p95": 75.94999694824219,
+        "p99": 77.86000061035156,
+        "max": 83.06999969482422
+      },
+      "degraded": {
+        "mean": 100.47676086425781,
+        "std": 2.865692377090454,
+        "min": 91.05999755859375,
+        "p05": 95.79400177001953,
+        "p50": 100.45999908447266,
+        "p95": 105.27999877929688,
+        "p99": 107.11000061035156,
+        "max": 110.1500015258789
+      }
+    },
+    "temperature_oil": {
+      "healthy": {
+        "mean": 66.2638168334961,
+        "std": 3.132101535797119,
+        "min": 51.060001373291016,
+        "p05": 61.06999969482422,
+        "p50": 66.31999969482422,
+        "p95": 71.33000183105469,
+        "p99": 73.34399719238283,
+        "max": 78.41000366210938
+      },
+      "degraded": {
+        "mean": 110.84178924560547,
+        "std": 3.171194553375244,
+        "min": 100.76000213623047,
+        "p05": 105.78399963378907,
+        "p50": 110.72000122070312,
+        "p95": 116.19000244140625,
+        "p99": 118.06239807128907,
+        "max": 122.3499984741211
+      }
+    },
+    "gas_c2h2": {
+      "healthy": {
+        "mean": 3.6875476837158203,
+        "std": 1.2844831943511963,
+        "min": 1.0099999904632568,
+        "p05": 1.6200000047683716,
+        "p50": 3.7100000381469727,
+        "p95": 5.760000228881836,
+        "p99": 6.449999809265137,
+        "max": 7.980000019073486
+      },
+      "degraded": {
+        "mean": 64.36116790771484,
+        "std": 1.759007453918457,
+        "min": 60.630001068115234,
+        "p05": 61.55400009155274,
+        "p50": 64.87999725341797,
+        "p95": 66.77999877929688,
+        "p99": 67.36000061035156,
+        "max": 68.43000030517578
+      }
+    },
+    "vibration_x": {
+      "healthy": {
+        "mean": 2.176271915435791,
+        "std": 0.5888670682907104,
+        "min": 0.30000001192092896,
+        "p05": 1.2599999904632568,
+        "p50": 2.1459999084472656,
+        "p95": 3.1710000038146973,
+        "p99": 3.515000104904175,
+        "max": 4.15500020980835
+      },
+      "degraded": {
+        "mean": 7.154122829437256,
+        "std": 0.535602331161499,
+        "min": 5.263999938964844,
+        "p05": 6.2820000648498535,
+        "p50": 7.138000011444092,
+        "p95": 8.046599769592284,
+        "p99": 8.36824001312256,
+        "max": 9.12600040435791
+      }
+    },
+    "vibration_y": {
+      "healthy": {
+        "mean": 2.1766865253448486,
+        "std": 0.587123692035675,
+        "min": 0.30000001192092896,
+        "p05": 1.2580000162124634,
+        "p50": 2.1489999294281006,
+        "p95": 3.1559998989105225,
+        "p99": 3.5,
+        "max": 4.210999965667725
+      },
+      "degraded": {
+        "mean": 7.158940315246582,
+        "std": 0.538256824016571,
+        "min": 5.4710001945495605,
+        "p05": 6.296000003814697,
+        "p50": 7.150000095367432,
+        "p95": 8.055000305175781,
+        "p99": 8.397240295410157,
+        "max": 9.031000137329102
+      }
+    },
+    "vibration_z": {
+      "healthy": {
+        "mean": 2.1768417358398438,
+        "std": 0.588901937007904,
+        "min": 0.30000001192092896,
+        "p05": 1.253000020980835,
+        "p50": 2.1489999294281006,
+        "p95": 3.1659998893737793,
+        "p99": 3.484999895095825,
+        "max": 4.197999954223633
+      },
+      "degraded": {
+        "mean": 7.160477638244629,
+        "std": 0.5392122864723206,
+        "min": 5.491000175476074,
+        "p05": 6.302799987792969,
+        "p50": 7.145999908447266,
+        "p95": 8.059600257873534,
+        "p99": 8.38712001800537,
+        "max": 9.27299976348877
+      }
+    }
+  },
+  "sample_rows_first_5": [
+    {
+      "timestamp": "2023-01-01 00:00:00",
+      "equipment_id": "SUB001_EQ01",
+      "temperature_top": 68.2699966430664,
+      "temperature_oil": 63.709999084472656,
+      "voltage_phase_a": 9.895999908447266,
+      "voltage_phase_b": 9.991000175476074,
+      "voltage_phase_c": 10.03600025177002,
+      "current_phase_a": 156.47999572753906,
+      "current_phase_b": 156.27000427246094,
+      "current_phase_c": 146.11000061035156,
+      "gas_h2": 26.139999389648438,
+      "gas_ch4": 9.5600004196167,
+      "gas_c2h2": 2.4200000762939453,
+      "vibration_x": 1.5190000534057617,
+      "vibration_y": 1.7239999771118164,
+      "vibration_z": 1.6380000114440918,
+      "humidity": 47.56999969482422,
+      "load_percentage": 60.689998626708984
+    },
+    {
+      "timestamp": "2023-01-01 01:00:00",
+      "equipment_id": "SUB001_EQ01",
+      "temperature_top": 70.33000183105469,
+      "temperature_oil": 65.70999908447266,
+      "voltage_phase_a": 9.97700023651123,
+      "voltage_phase_b": 10.031999588012695,
+      "voltage_phase_c": 9.961000442504883,
+      "current_phase_a": 154.86000061035156,
+      "current_phase_b": 172.6699981689453,
+      "current_phase_c": 151.1699981689453,
+      "gas_h2": 24.81999969482422,
+      "gas_ch4": 8.489999771118164,
+      "gas_c2h2": 2.5999999046325684,
+      "vibration_x": 1.8539999723434448,
+      "vibration_y": 2.1029999256134033,
+      "vibration_z": 1.7869999408721924,
+      "humidity": 43.5099983215332,
+      "load_percentage": 63.779998779296875
+    },
+    {
+      "timestamp": "2023-01-01 02:00:00",
+      "equipment_id": "SUB001_EQ01",
+      "temperature_top": 71.48999786376953,
+      "temperature_oil": 68.0999984741211,
+      "voltage_phase_a": 9.97700023651123,
+      "voltage_phase_b": 10.09000015258789,
+      "voltage_phase_c": 9.812999725341797,
+      "current_phase_a": 165.02000427246094,
+      "current_phase_b": 175.50999450683594,
+      "current_phase_c": 144.77999877929688,
+      "gas_h2": 24.079999923706055,
+      "gas_ch4": 7.929999828338623,
+      "gas_c2h2": 2.9200000762939453,
+      "vibration_x": 1.8040000200271606,
+      "vibration_y": 1.4559999704360962,
+      "vibration_z": 1.2009999752044678,
+      "humidity": 43.720001220703125,
+      "load_percentage": 63.59000015258789
+    },
+    {
+      "timestamp": "2023-01-01 03:00:00",
+      "equipment_id": "SUB001_EQ01",
+      "temperature_top": 72.05999755859375,
+      "temperature_oil": 67.70999908447266,
+      "voltage_phase_a": 9.958999633789062,
+      "voltage_phase_b": 9.939000129699707,
+      "voltage_phase_c": 10.057000160217285,
+      "current_phase_a": 159.75,
+      "current_phase_b": 165.9600067138672,
+      "current_phase_c": 158.1999969482422,
+      "gas_h2": 25.360000610351562,
+      "gas_ch4": 8.039999961853027,
+      "gas_c2h2": 2.5199999809265137,
+      "vibration_x": 2.61899995803833,
+      "vibration_y": 1.7239999771118164,
+      "vibration_z": 2.1089999675750732,
+      "humidity": 39.150001525878906,
+      "load_percentage": 65.19999694824219
+    },
+    {
+      "timestamp": "2023-01-01 04:00:00",
+      "equipment_id": "SUB001_EQ01",
+      "temperature_top": 72.66999816894531,
+      "temperature_oil": 67.06999969482422,
+      "voltage_phase_a": 9.944000244140625,
+      "voltage_phase_b": 10.036999702453613,
+      "voltage_phase_c": 9.916999816894531,
+      "current_phase_a": 161.94000244140625,
+      "current_phase_b": 174.64999389648438,
+      "current_phase_c": 150.02000427246094,
+      "gas_h2": 26.34000015258789,
+      "gas_ch4": 10.260000228881836,
+      "gas_c2h2": 3.450000047683716,
+      "vibration_x": 2.007999897003174,
+      "vibration_y": 2.066999912261963,
+      "vibration_z": 1.7619999647140503,
+      "humidity": 45.369998931884766,
+      "load_percentage": 63.150001525878906
+    }
+  ],
+  "output_files": {
+    "telemetry_parquet": "data/telemetry.parquet",
+    "data_summary_json": "artifacts/data_summary.json"
+  },
+  "target_variable": {
+    "semantics": "PREDICTIVE: label at row t = risk class at row t + horizon_hours",
+    "horizon_hours": 72,
+    "class_rule": "max(per_param_class(future_temperature_top), per_param_class(future_gas_c2h2), per_param_class(future_vibration_x))",
+    "thresholds": {
+      "temperature_top": {
+        "warn": 85.0,
+        "critical": 100.0
+      },
+      "gas_c2h2": {
+        "warn": 25.0,
+        "critical": 50.0
+      },
+      "vibration_x": {
+        "warn": 5.0,
+        "critical": 8.0
+      }
+    },
+    "composite_score_formula": "0.6*clip(c2h2/50,0,1) + 0.2*clip((T-55)/45,0,1) + 0.2*clip(vib/8,0,1) [all evaluated at t + horizon_hours]",
+    "class_distribution": {
+      "Low (0)": {
+        "count": 791334,
+        "pct": 90.708
+      },
+      "Medium (1)": {
+        "count": 16530,
+        "pct": 1.895
+      },
+      "High (2)": {
+        "count": 64536,
+        "pct": 7.398
+      },
+      "total_valid": 872400,
+      "invalid_horizon_overrun": 3600
+    },
+    "per_unit_class_share": {
+      "SUB001_EQ01": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB001_EQ02": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB001_EQ03": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB001_EQ04": {
+        "rows": 17448,
+        "pct_high": 41.6,
+        "pct_medium": 10.12,
+        "pct_low": 48.28
+      },
+      "SUB001_EQ05": {
+        "rows": 17448,
+        "pct_high": 58.4,
+        "pct_medium": 11.7,
+        "pct_low": 29.9
+      },
+      "SUB002_EQ01": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB002_EQ02": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB002_EQ03": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB002_EQ04": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB002_EQ05": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB003_EQ01": {
+        "rows": 17448,
+        "pct_high": 18.09,
+        "pct_medium": 11.03,
+        "pct_low": 70.87
+      },
+      "SUB003_EQ02": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB003_EQ03": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB003_EQ04": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB003_EQ05": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB004_EQ01": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB004_EQ02": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB004_EQ03": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB004_EQ04": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB004_EQ05": {
+        "rows": 17448,
+        "pct_high": 69.14,
+        "pct_medium": 12.17,
+        "pct_low": 18.69
+      },
+      "SUB005_EQ01": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB005_EQ02": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB005_EQ03": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB005_EQ04": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB005_EQ05": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB006_EQ01": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB006_EQ02": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB006_EQ03": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB006_EQ04": {
+        "rows": 17448,
+        "pct_high": 37.55,
+        "pct_medium": 10.92,
+        "pct_low": 51.54
+      },
+      "SUB006_EQ05": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB007_EQ01": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB007_EQ02": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB007_EQ03": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB007_EQ04": {
+        "rows": 17448,
+        "pct_high": 13.62,
+        "pct_medium": 12.4,
+        "pct_low": 73.99
+      },
+      "SUB007_EQ05": {
+        "rows": 17448,
+        "pct_high": 42.18,
+        "pct_medium": 10.13,
+        "pct_low": 47.69
+      },
+      "SUB008_EQ01": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB008_EQ02": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB008_EQ03": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB008_EQ04": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB008_EQ05": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB009_EQ01": {
+        "rows": 17448,
+        "pct_high": 66.7,
+        "pct_medium": 7.89,
+        "pct_low": 25.41
+      },
+      "SUB009_EQ02": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB009_EQ03": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB009_EQ04": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB009_EQ05": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB010_EQ01": {
+        "rows": 17448,
+        "pct_high": 22.59,
+        "pct_medium": 8.39,
+        "pct_low": 69.02
+      },
+      "SUB010_EQ02": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB010_EQ03": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB010_EQ04": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      },
+      "SUB010_EQ05": {
+        "rows": 17448,
+        "pct_high": 0.0,
+        "pct_medium": 0.0,
+        "pct_low": 100.0
+      }
+    },
+    "imbalance_strategy_hint": "Class High is rare (large imbalance expected). For Stage 4 consider: scale_pos_weight or sample_weight in XGBoost, stratified evaluation, and prioritise recall on class High in metric reporting.",
+    "anti_leakage_notes": [
+      "Label uses future sensor values via groupby('equipment_id').shift(-24) — no cross-unit bleeding.",
+      "Last 24 rows per unit are unlabeled (valid=0) and must be dropped before training.",
+      "7 'domain' features are direct subcomponents of the label rule; they are listed as training exclusions in artifacts/feature_list.json."
+    ],
+    "output_file": "data/labels.parquet"
+  }
+}

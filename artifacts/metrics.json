@@ -1,0 +1,341 @@
+{
+  "seed": 42,
+  "model": "XGBoost multi:softprob, max_depth=6, lr=0.1, n_estimators=100",
+  "xgb_params": {
+    "objective": "multi:softprob",
+    "num_class": 3,
+    "max_depth": 6,
+    "learning_rate": 0.1,
+    "n_estimators": 100,
+    "eval_metric": "mlogloss",
+    "tree_method": "hist",
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "imbalance_handling": "sklearn.utils.class_weight.compute_sample_weight('balanced', y_train) passed to XGBClassifier.fit(sample_weight=...)",
+  "feature_count": 104,
+  "feature_cols": [
+    "temperature_top",
+    "temperature_oil",
+    "voltage_phase_a",
+    "voltage_phase_b",
+    "voltage_phase_c",
+    "current_phase_a",
+    "current_phase_b",
+    "current_phase_c",
+    "gas_h2",
+    "gas_ch4",
+    "gas_c2h2",
+    "vibration_x",
+    "vibration_y",
+    "vibration_z",
+    "humidity",
+    "load_percentage",
+    "hour",
+    "day_of_week",
+    "month",
+    "hour_sin",
+    "hour_cos",
+    "month_sin",
+    "month_cos",
+    "is_weekend",
+    "temperature_top_roll3_mean",
+    "temperature_top_roll3_std",
+    "temperature_top_roll3_min",
+    "temperature_top_roll3_max",
+    "temperature_top_roll6_mean",
+    "temperature_top_roll6_std",
+    "temperature_top_roll6_min",
+    "temperature_top_roll6_max",
+    "temperature_top_roll12_mean",
+    "temperature_top_roll12_std",
+    "temperature_top_roll12_min",
+    "temperature_top_roll12_max",
+    "temperature_top_roll24_mean",
+    "temperature_top_roll24_std",
+    "temperature_top_roll24_min",
+    "temperature_top_roll24_max",
+    "gas_c2h2_roll3_mean",
+    "gas_c2h2_roll3_std",
+    "gas_c2h2_roll3_min",
+    "gas_c2h2_roll3_max",
+    "gas_c2h2_roll6_mean",
+    "gas_c2h2_roll6_std",
+    "gas_c2h2_roll6_min",
+    "gas_c2h2_roll6_max",
+    "gas_c2h2_roll12_mean",
+    "gas_c2h2_roll12_std",
+    "gas_c2h2_roll12_min",
+    "gas_c2h2_roll12_max",
+    "gas_c2h2_roll24_mean",
+    "gas_c2h2_roll24_std",
+    "gas_c2h2_roll24_min",
+    "gas_c2h2_roll24_max",
+    "vibration_x_roll3_mean",
+    "vibration_x_roll3_std",
+    "vibration_x_roll6_mean",
+    "vibration_x_roll6_std",
+    "vibration_x_roll12_mean",
+    "vibration_x_roll12_std",
+    "vibration_x_roll24_mean",
+    "vibration_x_roll24_std",
+    "temperature_top_lag1",
+    "temperature_top_lag3",
+    "temperature_top_lag6",
+    "temperature_top_lag12",
+    "gas_c2h2_lag1",
+    "gas_c2h2_lag3",
+    "gas_c2h2_lag6",
+    "gas_c2h2_lag12",
+    "vibration_x_lag1",
+    "vibration_x_lag3",
+    "vibration_x_lag6",
+    "vibration_x_lag12",
+    "temperature_top_d1",
+    "temperature_oil_d1",
+    "gas_c2h2_d1",
+    "vibration_x_d1",
+    "load_percentage_d1",
+    "temperature_top_d2",
+    "temperature_oil_d2",
+    "gas_c2h2_d2",
+    "vibration_x_d2",
+    "load_percentage_d2",
+    "temp_x_load",
+    "temp_x_humidity",
+    "oil_to_top_ratio",
+    "c2h2_x_temp",
+    "c2h2_to_h2",
+    "ch4_to_h2",
+    "c2h2_to_ch4",
+    "vibration_magnitude",
+    "current_imbalance",
+    "voltage_imbalance",
+    "current_avg",
+    "voltage_avg",
+    "apparent_power_proxy",
+    "vib_x_load",
+    "temp_per_load",
+    "load_high_flag",
+    "gas_total",
+    "hours_since_start"
+  ],
+  "metric_priority_for_thesis": [
+    "recall (High class) — missing a critical-risk row = missed incident",
+    "F1 (High class)",
+    "PR-AUC (High class) — appropriate under heavy imbalance",
+    "confusion matrix — shows High↔Medium confusion",
+    "ROC-AUC One-vs-Rest (macro)",
+    "macro F1",
+    "accuracy LAST — trivial 'always Low' baseline already scores ~93%"
+  ],
+  "primary_split_chronological_80_20": {
+    "split_name": "chronological_80_20",
+    "rationale": "Train on the first ~80% of the time axis, test on the last ~20%. Realistic ops: a model trained on past data predicts the near future.",
+    "n_train": 697400,
+    "n_test": 174400,
+    "train_class_counts": {
+      "Low (0)": 647726,
+      "Medium (1)": 15087,
+      "High (2)": 34587
+    },
+    "test_class_counts": {
+      "Low (0)": 143008,
+      "Medium (1)": 1443,
+      "High (2)": 29949
+    },
+    "cut_timestamp": "2024-08-04T16:00:00",
+    "support_per_class": {
+      "Low (0)": 143008,
+      "Medium (1)": 1443,
+      "High (2)": 29949
+    },
+    "per_class": {
+      "Low (0)": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "pr_auc": 1.0
+      },
+      "Medium (1)": {
+        "precision": 0.9815078236130867,
+        "recall": 0.9563409563409564,
+        "f1": 0.9687609687609687,
+        "pr_auc": 0.9977613638074785
+      },
+      "High (2)": {
+        "precision": 0.9978990195424532,
+        "recall": 0.9991318574910681,
+        "f1": 0.9985150579794778,
+        "pr_auc": 0.999994763627697
+      }
+    },
+    "primary_metrics_high_class": {
+      "recall": 0.9991318574910681,
+      "f1": 0.9985150579794778,
+      "precision": 0.9978990195424532,
+      "pr_auc": 0.999994763627697
+    },
+    "roc_auc_ovr_macro": 0.9999933495032417,
+    "macro_f1": 0.9890920089134823,
+    "accuracy": 0.9994896788990826,
+    "trivial_baseline_always_low": {
+      "accuracy": 0.82,
+      "recall_high": 0.0,
+      "note": "A model that always predicts Low scores this accuracy. Use it as a sanity floor — high accuracy alone is meaningless under ~93 % majority class."
+    },
+    "confusion_matrix": [
+      [
+        143008,
+        0,
+        0
+      ],
+      [
+        0,
+        1380,
+        63
+      ],
+      [
+        0,
+        26,
+        29923
+      ]
+    ],
+    "confusion_matrix_row_labels_true": [
+      "Low (0)",
+      "Medium (1)",
+      "High (2)"
+    ],
+    "confusion_matrix_col_labels_pred": [
+      "Low (0)",
+      "Medium (1)",
+      "High (2)"
+    ],
+    "threshold_rule_baseline": {
+      "description": "Apply the spec class rule (max of per-parameter classes on temperature_top, gas_c2h2, vibration_x) to the CURRENT-time-t sensor values to predict the t+24h class — no model, no features.",
+      "accuracy": 0.9990711009174312,
+      "recall_per_class": {
+        "Low (0)": 1.0,
+        "Medium (1)": 0.9937629937629938,
+        "High (2)": 0.994891315235901
+      },
+      "f1_per_class": {
+        "Low (0)": 1.0,
+        "Medium (1)": 0.9465346534653465,
+        "High (2)": 0.9972888844261472
+      },
+      "interpretation": "If this baseline matches the model's metrics, slow synthetic degradation makes sensor(t) ≈ sensor(t+24), so most of the signal is in the present. If model > baseline, the model genuinely predicts trajectory rather than reading off current state."
+    }
+  },
+  "robustness_split_equipment_40_10": {
+    "split_name": "equipment_40_10_stratified",
+    "rationale": "10 units held out (2 degraded + 8 healthy to keep stratification). Forces the model to generalize to *unseen transformers*; stricter than chronological split.",
+    "n_train": 697440,
+    "n_test": 174360,
+    "train_class_counts": {
+      "Low (0)": 634525,
+      "Medium (1)": 12997,
+      "High (2)": 49918
+    },
+    "test_class_counts": {
+      "Low (0)": 156209,
+      "Medium (1)": 3533,
+      "High (2)": 14618
+    },
+    "test_units_degraded": [
+      "SUB001_EQ04",
+      "SUB007_EQ05"
+    ],
+    "test_units_healthy": [
+      "SUB002_EQ01",
+      "SUB002_EQ05",
+      "SUB004_EQ03",
+      "SUB004_EQ04",
+      "SUB006_EQ01",
+      "SUB007_EQ02",
+      "SUB008_EQ03",
+      "SUB010_EQ04"
+    ],
+    "support_per_class": {
+      "Low (0)": 156209,
+      "Medium (1)": 3533,
+      "High (2)": 14618
+    },
+    "per_class": {
+      "Low (0)": {
+        "precision": 0.9997372384400935,
+        "recall": 0.9986236388428323,
+        "f1": 0.9991801283611534,
+        "pr_auc": 0.9999982801333481
+      },
+      "Medium (1)": {
+        "precision": 0.9317204301075269,
+        "recall": 0.9810359467874328,
+        "f1": 0.9557424513994209,
+        "pr_auc": 0.9955262657210333
+      },
+      "High (2)": {
+        "precision": 0.9982197877439233,
+        "recall": 0.9973320563688604,
+        "f1": 0.9977757246004859,
+        "pr_auc": 0.9999803780061616
+      }
+    },
+    "primary_metrics_high_class": {
+      "recall": 0.9973320563688604,
+      "f1": 0.9977757246004859,
+      "precision": 0.9982197877439233,
+      "pr_auc": 0.9999803780061616
+    },
+    "roc_auc_ovr_macro": 0.999954236944076,
+    "macro_f1": 0.9842327681203535,
+    "accuracy": 0.9981589814177564,
+    "trivial_baseline_always_low": {
+      "accuracy": 0.8958992888277127,
+      "recall_high": 0.0,
+      "note": "A model that always predicts Low scores this accuracy. Use it as a sanity floor — high accuracy alone is meaningless under ~93 % majority class."
+    },
+    "confusion_matrix": [
+      [
+        155994,
+        215,
+        0
+      ],
+      [
+        41,
+        3466,
+        26
+      ],
+      [
+        0,
+        39,
+        14579
+      ]
+    ],
+    "confusion_matrix_row_labels_true": [
+      "Low (0)",
+      "Medium (1)",
+      "High (2)"
+    ],
+    "confusion_matrix_col_labels_pred": [
+      "Low (0)",
+      "Medium (1)",
+      "High (2)"
+    ],
+    "threshold_rule_baseline": {
+      "description": "Apply the spec class rule (max of per-parameter classes on temperature_top, gas_c2h2, vibration_x) to the CURRENT-time-t sensor values to predict the t+24h class — no model, no features.",
+      "accuracy": 0.997786189493003,
+      "recall_per_class": {
+        "Low (0)": 0.999737531128168,
+        "Medium (1)": 0.945372204924993,
+        "High (2)": 0.9896018607196607
+      },
+      "f1_per_class": {
+        "Low (0)": 0.9992769434544186,
+        "Medium (1)": 0.945372204924993,
+        "High (2)": 0.9945002062422659
+      },
+      "interpretation": "If this baseline matches the model's metrics, slow synthetic degradation makes sensor(t) ≈ sensor(t+24), so most of the signal is in the present. If model > baseline, the model genuinely predicts trajectory rather than reading off current state."
+    }
+  }
+}

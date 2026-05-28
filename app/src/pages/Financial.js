@@ -1,0 +1,78 @@
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { useMemo, useState } from "react";
+import { useData } from "../lib/useData";
+import NotificationsBell from "../components/NotificationsBell";
+// Identical formula to economics.py — kept client-side so sliders recompute live.
+function compute(p) {
+    const savePerAvoidance = p.emergency_repair_mln - p.planned_repair_mln;
+    const failuresPerUnit = p.base_failure_rate * p.avoidance;
+    const annualSavings = failuresPerUnit * savePerAvoidance * p.n_units;
+    const annualOpex = p.investment_mln * p.opex_pct;
+    const net = annualSavings - annualOpex;
+    const cfs = [-p.investment_mln];
+    for (let t = 0; t < p.horizon_years; t++)
+        cfs.push(net);
+    const npv = (r) => cfs.reduce((acc, c, t) => acc + c / Math.pow(1 + r, t), 0);
+    const npvVal = npv(p.discount_rate);
+    // Bisection IRR
+    let lo = -0.99, hi = 10;
+    for (let i = 0; i < 80; i++) {
+        const mid = (lo + hi) / 2;
+        const fm = npv(mid);
+        if (Math.abs(fm) < 1e-9) {
+            lo = hi = mid;
+            break;
+        }
+        if (npv(lo) * fm < 0)
+            hi = mid;
+        else
+            lo = mid;
+    }
+    const irr = (lo + hi) / 2;
+    const pp = net > 0 ? p.investment_mln / net : null;
+    let cum = 0;
+    let dpp = null;
+    for (let t = 0; t < cfs.length; t++) {
+        const pv = cfs[t] / Math.pow(1 + p.discount_rate, t);
+        const prev = cum;
+        cum += pv;
+        if (cum >= 0 && t > 0 && dpp == null) {
+            dpp = (t - 1) + (-prev) / pv;
+        }
+    }
+    const roi = (net * p.horizon_years - p.investment_mln) / p.investment_mln;
+    return { annualSavings, annualOpex, net, cfs, npv: npvVal, irr, pp, dpp, roi };
+}
+function npvColor(v, scale) {
+    if (v < 0) {
+        const t = Math.min(1, Math.abs(v) / Math.max(1, Math.abs(scale.min)));
+        const l = 60 + (1 - t) * 20;
+        return `oklch(${l}% 0.20 25)`;
+    }
+    const t = Math.min(1, v / Math.max(1, scale.max));
+    const l = 80 - t * 15;
+    return `oklch(${l}% 0.15 155)`;
+}
+export default function Financial() {
+    const { data } = useData("financial.json");
+    const [p, setP] = useState(null);
+    const inputs = p ?? data?.inputs ?? null;
+    const result = useMemo(() => (inputs ? compute(inputs) : null), [inputs]);
+    if (!data || !inputs || !result)
+        return _jsx("div", { style: { color: "var(--fg-3)" }, children: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430\u2026" });
+    const mm = data.inputs_min_max;
+    const updateP = (k, v) => setP((prev) => ({ ...(prev ?? data.inputs), [k]: v }));
+    // Sensitivity grid color scale
+    const flat = data.sensitivity_3x3.npv_mln.flat();
+    const scale = { min: Math.min(...flat), max: Math.max(...flat) };
+    return (_jsxs(_Fragment, { children: [_jsxs("div", { className: "topbar", children: [_jsxs("div", { className: "topbar-title", children: [_jsx("div", { className: "page-eyebrow", children: "\u042D\u043A\u043E\u043D\u043E\u043C\u0438\u043A\u0430 \u043F\u0440\u043E\u0435\u043A\u0442\u0430 \u00B7 \u043F\u0438\u043B\u043E\u0442 50 \u0435\u0434\u0438\u043D\u0438\u0446" }), _jsx("h1", { className: "page-title", children: "\u0424\u0438\u043D\u0430\u043D\u0441\u043E\u0432\u0430\u044F \u043C\u043E\u0434\u0435\u043B\u044C" }), _jsx("div", { className: "page-sub", children: "\u0412\u0441\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u0430\u043A\u0442\u0438\u0432\u043D\u044B \u2014 \u0434\u0432\u0438\u0433\u0430\u0439\u0442\u0435 \u043F\u043E\u043B\u0437\u0443\u043D\u043A\u0438, KPI \u0438 \u0441\u0435\u0442\u043A\u0430 \u0447\u0443\u0432\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u0438 \u043F\u0435\u0440\u0435\u0441\u0447\u0438\u0442\u044B\u0432\u0430\u044E\u0442\u0441\u044F \u043D\u0430 \u043B\u0435\u0442\u0443" })] }), _jsxs("div", { className: "topbar-actions", children: [_jsx(NotificationsBell, {}), _jsxs("button", { className: "btn-primary", children: [_jsx("svg", { style: { width: 14, height: 14 }, children: _jsx("use", { href: "#i-export" }) }), "\u042D\u043A\u0441\u043F\u043E\u0440\u0442 \u043E\u0431\u043E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u044F"] })] })] }), _jsxs("section", { className: "fin-grid", children: [_jsxs("div", { className: "fin-card", children: [_jsxs("div", { className: "label", children: ["ROI \u00B7 ", inputs.horizon_years, " \u043B\u0435\u0442"] }), _jsxs("div", { className: "value", children: [result.roi.toFixed(0), _jsx("span", { className: "unit", children: "%" })] }), _jsx("div", { className: "footnote", children: "\u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u043D\u0430\u044F \u043E\u0442\u0434\u0430\u0447\u0430 \u043E\u0442 \u0438\u043D\u0432\u0435\u0441\u0442\u0438\u0446\u0438\u0439" })] }), _jsxs("div", { className: "fin-card", children: [_jsxs("div", { className: "label", children: ["NPV \u00B7 ", (inputs.discount_rate * 100).toFixed(1), "%"] }), _jsxs("div", { className: "value", style: { color: result.npv >= 0 ? "var(--ok)" : "var(--crit)" }, children: [result.npv >= 0 ? "+" : "", result.npv.toFixed(2), _jsx("span", { className: "unit", children: " \u043C\u043B\u043D \u20BD" })] }), _jsx("div", { className: "footnote", children: "\u0447\u0438\u0441\u0442\u044B\u0439 \u0434\u0438\u0441\u043A\u043E\u043D\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A" })] }), _jsxs("div", { className: "fin-card", children: [_jsx("div", { className: "label", children: "IRR" }), _jsxs("div", { className: "value", children: [(result.irr * 100).toFixed(1), _jsx("span", { className: "unit", children: "%" })] }), _jsx("div", { className: "footnote", children: "\u0432\u043D\u0443\u0442\u0440\u0435\u043D\u043D\u044F\u044F \u043D\u043E\u0440\u043C\u0430 \u0434\u043E\u0445\u043E\u0434\u043D\u043E\u0441\u0442\u0438" })] }), _jsxs("div", { className: "fin-card", children: [_jsx("div", { className: "label", children: "PP / DPP" }), _jsxs("div", { className: "value", children: [result.pp != null ? result.pp.toFixed(2) : "—", _jsxs("span", { className: "unit", children: [" / ", result.dpp != null ? result.dpp.toFixed(2) : "—", " \u0433"] })] }), _jsxs("div", { className: "footnote", children: ["\u0446\u0435\u043B\u044C \u0426\u0422-2030: ", _jsxs("b", { children: [data.target_payback_band_years.low, "\u2013", data.target_payback_band_years.high, " \u043B\u0435\u0442"] })] })] })] }), _jsxs("div", { className: "content-grid", style: { gridTemplateColumns: "1fr 1.1fr" }, children: [_jsxs("div", { className: "card", children: [_jsxs("div", { className: "card-head", children: [_jsxs("div", { children: [_jsx("div", { className: "card-title", children: "\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u043C\u043E\u0434\u0435\u043B\u0438" }), _jsx("div", { className: "card-sub", children: "\u043F\u0435\u0440\u0435\u0434\u0432\u0438\u043D\u044C\u0442\u0435 \u043F\u043E\u043B\u0437\u0443\u043D\u043A\u0438 \u0434\u043B\u044F \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 \u0441\u0446\u0435\u043D\u0430\u0440\u0438\u0435\u0432" })] }), _jsxs("button", { className: "btn-ghost", onClick: () => setP(data.inputs), children: [_jsx("svg", { style: { width: 14, height: 14 }, children: _jsx("use", { href: "#i-refresh" }) }), "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C"] })] }), _jsxs("div", { className: "slider-row", children: [_jsx("span", { className: "name", children: "\u0421\u043D\u0438\u0436\u0435\u043D\u0438\u0435 \u0430\u0432\u0430\u0440\u0438\u0439\u043D\u043E\u0441\u0442\u0438 (avoidance)" }), _jsxs("span", { className: "val", children: [(inputs.avoidance * 100).toFixed(0), " %"] }), _jsx("input", { type: "range", min: mm.avoidance.min, max: mm.avoidance.max, step: mm.avoidance.step, value: inputs.avoidance, onChange: (e) => updateP("avoidance", Number(e.target.value)) })] }), _jsxs("div", { className: "slider-row", children: [_jsx("span", { className: "name", children: "\u0421\u0442\u0430\u0432\u043A\u0430 \u0434\u0438\u0441\u043A\u043E\u043D\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F" }), _jsxs("span", { className: "val", children: [(inputs.discount_rate * 100).toFixed(2), " %"] }), _jsx("input", { type: "range", min: mm.discount_rate.min, max: mm.discount_rate.max, step: mm.discount_rate.step, value: inputs.discount_rate, onChange: (e) => updateP("discount_rate", Number(e.target.value)) })] }), _jsxs("div", { className: "slider-row", children: [_jsx("span", { className: "name", children: "\u0411\u0430\u0437\u043E\u0432\u0430\u044F \u0430\u0432\u0430\u0440\u0438\u0439\u043D\u043E\u0441\u0442\u044C \u043F\u0430\u0440\u043A\u0430" }), _jsxs("span", { className: "val", children: [(inputs.base_failure_rate * 100).toFixed(2), " %/\u0433\u043E\u0434"] }), _jsx("input", { type: "range", min: mm.base_failure_rate.min, max: mm.base_failure_rate.max, step: mm.base_failure_rate.step, value: inputs.base_failure_rate, onChange: (e) => updateP("base_failure_rate", Number(e.target.value)) })] }), _jsxs("div", { style: {
+                                    marginTop: 18, padding: 12, background: "var(--bg-2)",
+                                    border: "1px solid var(--border)", borderRadius: 10, fontSize: 12.5, color: "var(--fg-2)", lineHeight: 1.55,
+                                }, children: [_jsxs("div", { children: ["\u0413\u043E\u0434. \u044D\u043A\u043E\u043D\u043E\u043C\u0438\u044F: ", _jsxs("b", { className: "mono", style: { color: "var(--fg-0)" }, children: [result.annualSavings.toFixed(2), " \u043C\u043B\u043D \u20BD"] })] }), _jsxs("div", { children: ["\u0413\u043E\u0434. OPEX: ", _jsxs("b", { className: "mono", style: { color: "var(--fg-0)" }, children: [result.annualOpex.toFixed(2), " \u043C\u043B\u043D \u20BD"] })] }), _jsxs("div", { children: ["\u0427\u0438\u0441\u0442\u044B\u0439 \u043F\u043E\u0442\u043E\u043A: ", _jsxs("b", { className: "mono", style: { color: result.net > 0 ? "var(--ok)" : "var(--crit)" }, children: [result.net.toFixed(2), " \u043C\u043B\u043D \u20BD/\u0433\u043E\u0434"] })] })] })] }), _jsxs("div", { className: "card", children: [_jsx("div", { className: "card-head", children: _jsxs("div", { children: [_jsx("div", { className: "card-title", children: "\u0427\u0443\u0432\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C NPV" }), _jsx("div", { className: "card-sub", children: "\u0441\u0442\u0430\u0432\u043A\u0430 \u0434\u0438\u0441\u043A\u043E\u043D\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F \u00D7 \u0441\u043D\u0438\u0436\u0435\u043D\u0438\u0435 \u0430\u0432\u0430\u0440\u0438\u0439\u043D\u043E\u0441\u0442\u0438" })] }) }), _jsxs("table", { className: "heatmap", children: [_jsx("thead", { children: _jsxs("tr", { children: [_jsx("th", {}), data.sensitivity_3x3.rates.map((r) => (_jsxs("th", { children: [(r * 100).toFixed(0), "%"] }, r)))] }) }), _jsx("tbody", { children: data.sensitivity_3x3.avoidances.map((av, i) => (_jsxs("tr", { children: [_jsxs("th", { children: [(av * 100).toFixed(0), "%"] }), data.sensitivity_3x3.npv_mln[i].map((v, j) => (_jsxs("td", { style: { background: npvColor(v, scale) + "33" }, children: [_jsxs("b", { children: [v >= 0 ? "+" : "", v.toFixed(2)] }), _jsx("span", { className: "lbl", children: "\u043C\u043B\u043D \u20BD" })] }, j)))] }, av))) })] }), _jsxs("div", { style: { fontSize: 11.5, color: "var(--fg-3)", marginTop: 10, lineHeight: 1.55 }, children: ["\u041F\u0440\u0438 ", _jsx("b", { children: "45 % avoidance" }), " NPV \u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u0441\u044F \u043E\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u043C \u2014 \u043D\u0438\u0436\u043D\u044F\u044F \u0433\u0440\u0430\u043D\u0438\u0446\u0430, \u043F\u0440\u0438 \u043A\u043E\u0442\u043E\u0440\u043E\u0439 \u043F\u0438\u043B\u043E\u0442 \u0435\u0449\u0451 \u0438\u043C\u0435\u0435\u0442 \u0441\u043C\u044B\u0441\u043B. \u0411\u0430\u0437\u043E\u0432\u044B\u0439 \u0441\u0446\u0435\u043D\u0430\u0440\u0438\u0439 65 % \u043E\u0431\u0435\u0441\u043F\u0435\u0447\u0438\u0432\u0430\u0435\u0442 \u043F\u0440\u043E\u0447\u043D\u044B\u0439 \u0437\u0430\u043F\u0430\u0441."] })] })] }), _jsxs("div", { className: "card", style: { marginTop: 16 }, children: [_jsx("div", { className: "card-head", children: _jsxs("div", { children: [_jsxs("div", { className: "card-title", children: ["\u0414\u0435\u043D\u0435\u0436\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A \u00B7 ", inputs.horizon_years, " \u043B\u0435\u0442"] }), _jsxs("div", { className: "card-sub", children: ["\u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A \u0441 \u0434\u0438\u0441\u043A\u043E\u043D\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435\u043C \u043F\u0440\u0438 ", (inputs.discount_rate * 100).toFixed(1), " %"] })] }) }), result.cfs.map((cf, year) => {
+                        const maxAbs = Math.max(...result.cfs.map(Math.abs));
+                        const pct = (Math.abs(cf) / maxAbs) * 100;
+                        return (_jsxs("div", { className: "cf-row", children: [_jsx("div", { className: "cf-year", children: year === 0 ? "Год 0" : `Год ${year}` }), _jsxs("div", { className: "cf-track", children: [cf > 0 && _jsx("div", { className: "cf-bar pos", style: { width: `${pct / 2}%` } }), cf < 0 && _jsx("div", { className: "cf-bar neg", style: { width: `${pct / 2}%` } }), _jsx("div", { className: "cf-bar zero" })] }), _jsxs("div", { className: `cf-val ${cf >= 0 ? "pos" : "neg"}`, children: [cf >= 0 ? "+" : "", cf.toFixed(2), " \u043C\u043B\u043D"] })] }, year));
+                    })] }), _jsxs("div", { className: "card", style: { marginTop: 16 }, children: [_jsx("div", { className: "card-head", children: _jsxs("div", { children: [_jsx("div", { className: "card-title", children: "\u041C\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435 \u043D\u0430 \u0441\u0435\u0442\u044C 35 \u043A\u0412+" }), _jsx("div", { className: "card-sub", children: "\u044F\u043A\u043E\u0440\u044C \u2014 40,1 \u0442\u044B\u0441. \u043F\u043E\u0434\u0441\u0442\u0430\u043D\u0446\u0438\u0439 \u0441 \u0446\u0438\u0444\u0440\u043E\u0432\u044B\u043C \u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435\u043C, AR-2024 \u0441\u0442\u0440. 10" })] }) }), _jsx("div", { style: { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }, children: ["low", "midpoint", "high"].map((tier) => (_jsxs("div", { style: {
+                                padding: 14, background: "var(--bg-2)", border: "1px solid var(--border)", borderRadius: 12,
+                            }, children: [_jsx("div", { style: { fontSize: 11, color: "var(--fg-3)", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600 }, children: tier === "low" ? "Консерв." : tier === "midpoint" ? "База (40,1 тыс)" : "Амбициозно" }), _jsxs("div", { style: { fontFamily: "Space Grotesk, sans-serif", fontSize: 22, fontWeight: 600, color: "var(--fg-0)", marginTop: 6 }, children: [data.scaling_35kv_plus.annual_saving_mln[tier].toLocaleString("ru-RU"), " ", _jsx("span", { style: { fontSize: 12, color: "var(--fg-2)" }, children: "\u043C\u043B\u043D \u20BD/\u0433\u043E\u0434" })] }), _jsxs("div", { style: { fontSize: 12, color: "var(--accent)", marginTop: 4 }, children: ["NPV 5 \u043B\u0435\u0442: ", data.scaling_35kv_plus.scaled_npv_mln[tier].toLocaleString("ru-RU"), " \u043C\u043B\u043D \u20BD"] }), _jsxs("div", { style: { fontSize: 11, color: "var(--fg-3)", marginTop: 4 }, children: [data.scaling_35kv_plus.n_substations_in_scope[tier].toLocaleString("ru-RU"), " \u043F\u043E\u0434\u0441\u0442\u0430\u043D\u0446\u0438\u0439"] })] }, tier))) })] })] }));
+}

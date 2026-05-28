@@ -1,0 +1,449 @@
+{
+  "horizon_years": 5,
+  "params": {
+    "discount_rate": {
+      "base": 0.14,
+      "sensitivity_set": [
+        0.12,
+        0.14,
+        0.17
+      ],
+      "rationale": "13.71 % — actual discount rate of PAO Rosseti used in impairment testing per RSBU 2024 (nominal rate, WACC-based). 14 % — rounded up for safety margin (base case). 17.1 % — weighted-average rate over the ENTIRE debt portfolio at end of 2024 (annual report 2024 page 59). 12 % — optimistic scenario assuming key-rate easing.",
+      "sources": [
+        {
+          "file": "references/86_Россети_Отчетность_РСБУ_2024.pdf",
+          "page": 41,
+          "value": 0.1371,
+          "ref_in_thesis": "[45]",
+          "exact_quote": "Ставка дисконтирования (Номинальная ставка дисконтирования, определенная для целей теста на основе средневзвешенной стоимости капитала) — 13,71 %"
+        },
+        {
+          "file": "references/21_Россети_Годовой_отчет_2024.pdf",
+          "page": 59,
+          "value": 0.171,
+          "ref_in_thesis": "[11]",
+          "exact_quote": "Средневзвешенная процентная ставка по долговому портфелю Группы составила 17,10 % годовых, увеличившись относительно начала года в 1,4 раза"
+        }
+      ]
+    },
+    "emergency_repair_cost_rub": {
+      "value": 7500000,
+      "source": {
+        "doc": "Методика Жилкиной (вне references/)",
+        "ref_in_thesis": "[28]",
+        "page": null,
+        "note": "Damage structure for grid-equipment failure — NOT in references/ folder; cited as in thesis"
+      },
+      "breakdown": {
+        "capital_repair": {
+          "low": 2000000,
+          "high": 2500000,
+          "midpoint": 2250000
+        },
+        "emergency_parts_logistics": {
+          "low": 1000000,
+          "high": 1500000,
+          "midpoint": 1250000
+        },
+        "overtime_and_callouts": {
+          "low": 500000,
+          "high": 1000000,
+          "midpoint": 750000
+        },
+        "energy_undersupply_damage": {
+          "low": 2500000,
+          "high": 3500000,
+          "midpoint": 3000000
+        },
+        "midpoint_total": 7250000
+      }
+    },
+    "planned_repair_cost_rub": {
+      "value": 1900000,
+      "note": "Approximately the capital-repair component only — no rush logistics, no energy-undersupply damage. ≈ 25 % of emergency.",
+      "source": {
+        "doc": "PoC estimate aligned with Жилкина methodology",
+        "ref_in_thesis": "[28]"
+      }
+    },
+    "base_failure_rate_per_year": {
+      "value": 0.025,
+      "note": "2.5 %/year — PoC estimate for medium-wear transformers. Marked for refinement against actual Rosseti incident statistics during pilot rollout.",
+      "source": {
+        "doc": "PoC assumption (industry-typical for aging fleet)",
+        "ref": "—",
+        "page": null
+      },
+      "refinement_status": "PARAMETER_TO_BE_REFINED_WITH_REAL_INCIDENT_DATA"
+    },
+    "avoidance_scenarios": {
+      "pessimistic": 0.45,
+      "base": 0.65,
+      "optimistic": 0.8,
+      "avoidance_rationale": "Model recall_High on 72 h horizon = 0.9991, but real-world failure avoidance is materially lower than recall due to: (a) organisational factors — crew unavailable, spare parts not ready, ambiguous alerts disregarded; (b) external causes of failures that ML cannot influence (Rosseti Annual Report 2024 attributes the 2024 uptick in technological disturbances to external factors); (c) first-year process maturation. Discount factor recall → avoidance ≈ 0.65 for the base case.",
+      "source_for_external_factors": {
+        "file": "references/21_Россети_Годовой_отчет_2024.pdf",
+        "page": 35,
+        "ref_in_thesis": "[11]",
+        "note": "Section 'Отраслевые риски' describes external factors (weather, third-party damage, sub-station ageing beyond warranty) that drive technological disturbances regardless of monitoring quality."
+      }
+    },
+    "pilot_investment_rub": {
+      "value": 8000000,
+      "composition": [
+        "ML pipeline (data generator → FE → training → inference)",
+        "Integration with existing data sources (ССПИ / АСМД / Rosseti IT)",
+        "Web dashboard development and deployment",
+        "Personnel training and rollout support"
+      ],
+      "key_positioning": "Grid Guardian is an analytical layer over the data-collection infrastructure that already exists in Rosseti (ССПИ, АСМД). No new sensors, no new communication channels, no heavy hardware are required — only software, integration and process change. This is what justifies the relatively modest pilot CAPEX.",
+      "sources": [
+        {
+          "doc": "ВКР Глава 2.3 (Grid Guardian as analytical layer)",
+          "ref_in_thesis": "[11], [34], [44]",
+          "note": "Existing data-collection infrastructure (ССПИ, АСМД, IT-инфраструктура)"
+        },
+        {
+          "file": "references/24_Россети_Программа_инновационного_развития_2024-2029.pdf",
+          "page": null,
+          "ref_in_thesis": "[44]",
+          "note": "Innovation programme — confirms direction towards digital diagnostics overlays"
+        }
+      ]
+    },
+    "opex_pct_of_investment_per_year": {
+      "low": 0.1,
+      "midpoint": 0.125,
+      "high": 0.15,
+      "note": "OPEX covers: model monitoring, periodic retraining on new telemetry, infrastructure support, software updates."
+    },
+    "pilot_units": {
+      "value": 50,
+      "substations": 10,
+      "source": {
+        "doc": "Stage 1 generated dataset",
+        "ref": "self"
+      }
+    },
+    "scaling_assumptions": {
+      "substations_total_rosseti": {
+        "value": 593000,
+        "source": {
+          "file": "references/21_Россети_Годовой_отчет_2024.pdf",
+          "page": 10,
+          "ref_in_thesis": "[11]",
+          "exact_quote": "Количество подстанций 593 тыс. шт.",
+          "note": "Total substations across all voltage classes (mostly 0.4 kV distribution КТП)"
+        }
+      },
+      "substations_with_digital_control_anchor": {
+        "value": 40100,
+        "source": {
+          "file": "references/21_Россети_Годовой_отчет_2024.pdf",
+          "page": 10,
+          "ref_in_thesis": "[11]",
+          "exact_quote": "40,1 тыс. шт. — Подстанции с цифровым управлением",
+          "note": "Used as the best PUBLISHED proxy for 35 kV+ substations: digital control is deployed primarily at higher-voltage nodes where oil transformers (DGA-relevant for Grid Guardian) live. The annual report does not give a direct voltage-class breakdown in open form."
+        }
+      },
+      "n_substations_in_scope_range": {
+        "low": 20000,
+        "midpoint": 40100,
+        "high": 60000,
+        "rationale": "Anchored on 40,100 digitally-controlled substations from AR-2024 p. 10. Low (20 000): only the subset most ready for ML overlay. Midpoint (40 100): equals the digital-control fleet 1:1. High (60 000): ambitious rollout, includes substations being digitised in 2025-2030 per Rosseti TsT-2030."
+      },
+      "avg_transformers_per_substation": {
+        "value": 3,
+        "note": "Conservative average for 35 kV+ nodes; large 220-500 kV substations have more."
+      }
+    },
+    "rosseti_targets_for_reference": {
+      "target_payback_years_digital_projects": {
+        "low": 5,
+        "high": 10,
+        "source": {
+          "file": "references/20_Россети_Концепция_Цифровая_трансформация_2030_2018.pdf",
+          "page": 15,
+          "ref_in_thesis": "[34]",
+          "exact_quote": "сроки окупаемости различных цифровых технологий составляют от 5 до 10 лет"
+        }
+      },
+      "opex_reduction_target_pct": 0.3,
+      "capex_reduction_target_pct": 0.15,
+      "source": {
+        "file": "references/20_Россети_Концепция_Цифровая_трансформация_2030_2018.pdf",
+        "page": null,
+        "ref_in_thesis": "[34]",
+        "note": "OPEX -30% / CAPEX -15% targets stated in ЦТ-2030 strategic goals"
+      }
+    }
+  },
+  "pilot_scenarios": {
+    "pessimistic_avoidance_45pct": {
+      "inputs": {
+        "avoidance": 0.45,
+        "discount_rate": 0.14,
+        "opex_pct_of_investment": 0.125,
+        "investment_rub": 8000000,
+        "n_units": 50
+      },
+      "per_unit": {
+        "saving_per_avoided_failure": 5600000,
+        "expected_failures_per_year_per_unit": 0.025,
+        "failures_avoided_per_year_per_unit": 0.011250000000000001,
+        "annual_saving_per_unit": 63000.00000000001
+      },
+      "annual_savings_total_rub": 3150000.0000000005,
+      "annual_opex_rub": 1000000.0,
+      "annual_net_cashflow_rub": 2150000.0000000005,
+      "cashflows_by_year_rub": [
+        -8000000,
+        2150000.0000000005,
+        2150000.0000000005,
+        2150000.0000000005,
+        2150000.0000000005,
+        2150000.0000000005
+      ],
+      "pv_by_year_rub": [
+        -8000000.0,
+        1885964.912280702,
+        1654355.1862111418,
+        1451188.759834335,
+        1272972.5963459075,
+        1116642.628373603
+      ],
+      "cumulative_pv_rub": [
+        -8000000.0,
+        -6114035.087719298,
+        -4459679.901508156,
+        -3008491.141673821,
+        -1735518.5453279135,
+        -618875.9169543104
+      ],
+      "roi_simple": 0.3437500000000002,
+      "pp_simple_years": 3.7209302325581386,
+      "npv_rub": -618875.9169543106,
+      "irr": 0.10732204867547285,
+      "dpp_years": null
+    },
+    "base_avoidance_65pct": {
+      "inputs": {
+        "avoidance": 0.65,
+        "discount_rate": 0.14,
+        "opex_pct_of_investment": 0.125,
+        "investment_rub": 8000000,
+        "n_units": 50
+      },
+      "per_unit": {
+        "saving_per_avoided_failure": 5600000,
+        "expected_failures_per_year_per_unit": 0.025,
+        "failures_avoided_per_year_per_unit": 0.01625,
+        "annual_saving_per_unit": 91000.0
+      },
+      "annual_savings_total_rub": 4550000.0,
+      "annual_opex_rub": 1000000.0,
+      "annual_net_cashflow_rub": 3550000.0,
+      "cashflows_by_year_rub": [
+        -8000000,
+        3550000.0,
+        3550000.0,
+        3550000.0,
+        3550000.0,
+        3550000.0
+      ],
+      "pv_by_year_rub": [
+        -8000000.0,
+        3114035.087719298,
+        2731609.7260695593,
+        2396148.882517157,
+        2101884.9846641724,
+        1843758.7584773442
+      ],
+      "cumulative_pv_rub": [
+        -8000000.0,
+        -4885964.912280702,
+        -2154355.1862111427,
+        241793.69630601443,
+        2343678.680970187,
+        4187437.439447531
+      ],
+      "roi_simple": 1.21875,
+      "pp_simple_years": 2.2535211267605635,
+      "npv_rub": 4187437.439447531,
+      "irr": 0.34168169864816267,
+      "dpp_years": 2.899090704225353
+    },
+    "optimistic_avoidance_80pct": {
+      "inputs": {
+        "avoidance": 0.8,
+        "discount_rate": 0.14,
+        "opex_pct_of_investment": 0.125,
+        "investment_rub": 8000000,
+        "n_units": 50
+      },
+      "per_unit": {
+        "saving_per_avoided_failure": 5600000,
+        "expected_failures_per_year_per_unit": 0.025,
+        "failures_avoided_per_year_per_unit": 0.020000000000000004,
+        "annual_saving_per_unit": 112000.00000000001
+      },
+      "annual_savings_total_rub": 5600000.000000001,
+      "annual_opex_rub": 1000000.0,
+      "annual_net_cashflow_rub": 4600000.000000001,
+      "cashflows_by_year_rub": [
+        -8000000,
+        4600000.000000001,
+        4600000.000000001,
+        4600000.000000001,
+        4600000.000000001,
+        4600000.000000001
+      ],
+      "pv_by_year_rub": [
+        -8000000.0,
+        4035087.719298246,
+        3539550.630963373,
+        3104868.9745292747,
+        2723569.275902872,
+        2389095.8560551507
+      ],
+      "cumulative_pv_rub": [
+        -8000000.0,
+        -3964912.280701754,
+        -425361.64973838115,
+        2679507.3247908936,
+        5403076.600693766,
+        7792172.456748917
+      ],
+      "roi_simple": 1.8750000000000004,
+      "pp_simple_years": 1.7391304347826084,
+      "npv_rub": 7792172.456748916,
+      "irr": 0.4990360689075072,
+      "dpp_years": 2.1369982608695652
+    }
+  },
+  "sensitivity_grid_3x3": {
+    "rates": [
+      0.12,
+      0.14,
+      0.17
+    ],
+    "avoidances": [
+      0.45,
+      0.65,
+      0.8
+    ],
+    "npv_grid_rub": [
+      [
+        -249731.16495823953,
+        -618875.9169543106,
+        -1121405.750132185
+      ],
+      [
+        4796955.518324764,
+        4187437.439447531,
+        3357678.8776887152
+      ],
+      [
+        8581970.530787023,
+        7792172.456748916,
+        6716992.348554394
+      ]
+    ],
+    "irr_grid": [
+      [
+        0.10732204867547285,
+        0.10732204867547285,
+        0.10732204867547285
+      ],
+      [
+        0.34168169864816267,
+        0.34168169864816267,
+        0.34168169864816267
+      ],
+      [
+        0.4990360689075072,
+        0.4990360689075072,
+        0.4990360689075072
+      ]
+    ],
+    "row_labels_avoidance": [
+      "45%",
+      "65%",
+      "80%"
+    ],
+    "col_labels_rate": [
+      "12%",
+      "14%",
+      "17%"
+    ]
+  },
+  "scaling_estimate_35kv_plus": {
+    "method": "Linear scaling of saving (per-unit × n_units), sublinear scaling of CAPEX with exponent 0.70 — accounts for economies of scale on rollout. OPEX at midpoint 12.5 % of scaled CAPEX, discount 14 %.",
+    "annual_saving_low_rub": 5460000000.0,
+    "annual_saving_midpoint_rub": 10947300000.0,
+    "annual_saving_high_rub": 16380000000.0,
+    "n_substations_in_scope": {
+      "low": 20000,
+      "midpoint": 40100,
+      "high": 60000
+    },
+    "n_transformers_in_scope": {
+      "low": 60000,
+      "midpoint": 120300,
+      "high": 180000
+    },
+    "scaled_investment_rub": {
+      "low": 1144239298.0964582,
+      "midpoint": 1862073944.1267693,
+      "high": 2468889982.442419
+    },
+    "scaled_npv_5y_rub": {
+      "low": 17109349522.106367,
+      "midpoint": 34921812018.73384,
+      "high": 52705488885.8431
+    },
+    "scaled_irr": {
+      "low": 4.6459191587746655,
+      "midpoint": 5.7536803175675075,
+      "high": 6.509287897563462
+    }
+  },
+  "payback_vs_rosseti_target": {
+    "pilot_pp_years": 2.2535211267605635,
+    "pilot_dpp_years": 2.899090704225353,
+    "target_low_years": 5,
+    "target_high_years": 10,
+    "verdict": "pilot PP and DPP are MATERIALLY BELOW the 5-10-year target band (2.25 y / 2.90 y vs 5-10 y) — strong argument that Grid Guardian outperforms the corporate expectation for digital-project payback."
+  },
+  "emergency_repair_breakdown": {
+    "capital_repair": {
+      "low": 2000000,
+      "high": 2500000,
+      "midpoint": 2250000
+    },
+    "emergency_parts_logistics": {
+      "low": 1000000,
+      "high": 1500000,
+      "midpoint": 1250000
+    },
+    "overtime_and_callouts": {
+      "low": 500000,
+      "high": 1000000,
+      "midpoint": 750000
+    },
+    "energy_undersupply_damage": {
+      "low": 2500000,
+      "high": 3500000,
+      "midpoint": 3000000
+    },
+    "midpoint_total": 7250000
+  },
+  "key_positioning": "Grid Guardian is an analytical layer over the data-collection infrastructure that already exists in Rosseti (ССПИ, АСМД). No new sensors, no new communication channels, no heavy hardware are required — only software, integration and process change. This is what justifies the relatively modest pilot CAPEX.",
+  "avoidance_rationale": "Model recall_High on 72 h horizon = 0.9991, but real-world failure avoidance is materially lower than recall due to: (a) organisational factors — crew unavailable, spare parts not ready, ambiguous alerts disregarded; (b) external causes of failures that ML cannot influence (Rosseti Annual Report 2024 attributes the 2024 uptick in technological disturbances to external factors); (c) first-year process maturation. Discount factor recall → avoidance ≈ 0.65 for the base case.",
+  "parameters_to_refine_with_real_data": [
+    "base_failure_rate_per_year (currently 2.5%/y PoC estimate)",
+    "substations_35kV_and_above_share (currently 1.2-3.0% expert range)",
+    "discount rate page references in source PDFs"
+  ],
+  "notes_on_sources": "Sources were read directly from references/ folder. Page numbers and exact_quote fields verified against actual PDFs:\n  - 13.71 % discount rate: RSBU 2024 p. 41 (verified)\n  - 17.10 % WACD-portfolio: Annual Report 2024 p. 59 (verified — note: this is the portfolio-wide weighted average rate at year-end, NOT specifically 'new debt' as paraphrased in the brief)\n  - 593 k total substations, 40.1 k digitally-controlled: AR 2024 p. 10 (verified)\n  - 5-10 year digital-project payback: ЦТ-2030 p. 15 (verified)\n  - External-factor disturbances: AR 2024 p. 35 (verified)\nЖилкина methodology is NOT in references/; cited as in the thesis bibliography."
+}

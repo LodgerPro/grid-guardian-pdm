@@ -1,0 +1,1 @@
+{"root":["./src/main.tsx","./src/vite-env.d.ts","./src/components/iconsprite.tsx","./src/components/notificationsbell.tsx","./src/components/shell.tsx","./src/lib/usedata.ts","./src/pages/financial.tsx","./src/pages/home.tsx","./src/pages/mapspage.tsx","./src/pages/monitoring.tsx","./src/pages/predictions.tsx"],"version":"5.9.3"}
